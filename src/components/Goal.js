@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, Modal } from 'react-native';
 
 import DoubleTapTouchable from './DoubleTapTouchable';
 
@@ -33,17 +33,24 @@ export default function Goal(props) {
   }
 
   return (
-    <DoubleTapTouchable onDoubleTap={handleDoubleClick} onLongPress={handleLongPress} delay={300}>
-      <View style={styles.goalContainer}>
-        <Image style={styles.goalIcon} source={props.icon} />
-        <View style={styles.goalDetailContainer}>
-          <Text style={styles.goalTitle}>{props.title}</Text>
-          <Text style={styles.goalDescription}>{props.description}</Text>
-          <Text >Meta-to-date: {getGoalToDate(props.goal)}/{props.goal}</Text>
-          <Text >Realizado: {accomplished}/{props.goal}</Text>
+    <>
+      <Modal
+        visible={false}
+      >
+
+      </Modal>
+      <DoubleTapTouchable onDoubleTap={handleDoubleClick} onLongPress={handleLongPress} delay={300}>
+        <View style={styles.goalContainer}>
+          <Image style={styles.goalIcon} source={props.icon} />
+          <View style={styles.goalDetailContainer}>
+            <Text style={styles.goalTitle}>{props.title}</Text>
+            <Text style={styles.goalDescription}>{props.description}</Text>
+            <Text >Meta-to-date: {getGoalToDate(props.goal)}/{props.goal}</Text>
+            <Text >Realizado: {accomplished}/{props.goal}</Text>
+          </View>
         </View>
-      </View>
-    </DoubleTapTouchable>
+      </DoubleTapTouchable>
+    </>
   )
 }
 
